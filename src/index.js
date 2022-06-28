@@ -57,12 +57,16 @@ class StarboardsManager extends EventEmitter {
 
 		this._init();
 
-		this.client.on('channelDelete', channel => {
+		this.channelDelete =  (channel) => {
+			channel = this.client.channels.forge(channel);
 			const channelData = this.starboards.find(data => data.channelId === channel.id);
 			if (channelData) return this.delete(channelData.channelId);
-		});
-		this.client.on('raw', packet => handleRaw(this, packet));
-		this.client.on('messageDelete', message => handleMsgDelete(this, message));
+		};
+		this.raw = packet => handleRaw(this, packet);
+		this.messageDelete = message => {
+			message = this.client.messages.forge(message);
+			return handleMsgDelete(this, message);
+		}
 
 	}
 

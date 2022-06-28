@@ -20,7 +20,7 @@ module.exports = async (manager, message) => {
 			const starEmbed = new MessageEmbed()
 				.setColor(foundStar.color)
 				.setDescription(foundStar.description || '')
-				.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
+				.setAuthor({ name: message.author.tag, iconURL: message.author.avatarURL() })
 				.setTimestamp()
 				.setFooter({ text: `${data.options.emoji} 0 | ${message.id}` })
 				.setImage(image);

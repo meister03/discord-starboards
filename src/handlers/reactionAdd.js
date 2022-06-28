@@ -45,7 +45,7 @@ module.exports = async (manager, emoji, message, user) => {
 		const starEmbed = new MessageEmbed()
 			.setColor(getColor(data.options.color, count) || foundStar.color)
 			.setDescription(foundStar.description || '')
-			.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
+			.setAuthor({ name: message.author.tag, iconURL: message.author.avatarURL() })
 			.setTimestamp()
 			.setFooter({ text: `${emoji.length > 5 ? '' : data.options.emoji} ${count} | ${message.id}`, iconURL: footerUrl })
 			.setImage(image);
@@ -105,7 +105,7 @@ module.exports = async (manager, emoji, message, user) => {
 		const starEmbed = new MessageEmbed()
 			.setColor(getColor(data.options.color))
 			.setDescription(`${content}\n${image === 'attachment' ? '[attachment]\n' : ''}\n[${manager.options.translateClickHere(message)}](${message.url})`)
-			.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
+			.setAuthor({ name: message.author.tag, iconURL: message.author.avatarURL() })
 			.setTimestamp()
 			.setFooter({ text: `${emoji.length > 5 ? '' : data.options.emoji} ${reaction && reaction.count ? reaction.count : 1} | ${message.id}`, iconURL: footerUrl })
 			.setImage(image !== 'attachment' ? image : '');
